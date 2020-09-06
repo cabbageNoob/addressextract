@@ -7,7 +7,8 @@ import sys, os
 sys.path.insert(0, os.getcwd())
 import time
 from addressparse.address import Address
-from addressparse.address_interface import find_address
+from addressparse.find_address import find_address
+from addressparse.supplement_address import supplement_address
 
 address = Address(is_max_address=True)
 # address.add_vague_text(['红花岗', '花溪'])
@@ -20,5 +21,11 @@ def find_address_test():
     print(af)  # ['江西鄱阳', '江西省南昌']
     print(str(time.time() - t1))
 
+def supplement_address_test():
+    print(supplement_address(address, '鄱阳四十里街镇'))
+    print(supplement_address(address, '山西孝义'))
+    print(supplement_address(address,'山西孝义镇'))
+
 if __name__ == '__main__':
-    find_address_test()
+    # find_address_test()
+    supplement_address_test()
