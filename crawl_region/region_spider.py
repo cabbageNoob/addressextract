@@ -24,7 +24,7 @@ class RegionSpider():
         try:
             response = requests.get(url, headers=self.headers, timeout=5)
             if response.status_code == 200:
-                soup = BeautifulSoup(response.content, "html.parser")
+                soup = BeautifulSoup(response.content, "html.parser", from_encoding="GBK")
                 return soup
         except Exception as e:
             print(e)
@@ -33,7 +33,7 @@ class RegionSpider():
                 try:
                     response = requests.get(url, headers=self.headers, timeout=5)
                     if response.status_code == 200:
-                        soup = BeautifulSoup(response.content, "html.parser")
+                        soup = BeautifulSoup(response.content, "html.parser", from_encoding="GBK")
                         return soup
                 except Exception as e:
                     print(e)
@@ -46,8 +46,8 @@ class RegionSpider():
         for tr in tr_lists:
             for td in tr.find_all('td'):
                 province = td.find('a')
-                print(province.text)
                 if province != None:
+                    print(province.text)
                     self.address.setdefault(province.text, {})
                     self.spider_city(province.get('href'), [province.text])
                 writejson2file(self.address, self.address_path)
@@ -95,10 +95,7 @@ class RegionSpider():
             village = tr.find_all('td')[-1]
             if village != None:                
                 self.address.get(path[0]).get(path[1]).get(path[2]).get(path[3]).append(village.text)    
-        # writejson2file(self.address, self.address_path)
 
 if __name__ == '__main__':
     region_spider = RegionSpider()
     content = region_spider.spider_province('index.html')
-    writejson2file(region_spider.address, region_spider.address_path)
-    # print(content)
