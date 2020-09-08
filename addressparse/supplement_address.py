@@ -6,7 +6,7 @@ Date: 2020-09-06 14:19:02
 import sys, os
 sys.path.insert(0, os.getcwd())
 
-from addressparse.tool import remove_subset
+from utils.addressparse_util import remove_subset
 from collections.abc import Iterable
 
 

@@ -1,9 +1,12 @@
-from .tool import reset_key
+import os, sys
+sys.path.insert(0, os.getcwd())
+from utils.load_util import readjson
+from utils.addressparse_util import reset_key
+
 from .multitree import MultiTree
 from collections.abc import Iterable
 import ahocorasick
 import bz2
-import os
 import json
 import re
 import itertools
@@ -79,10 +82,11 @@ class Address:
 
     def _unzip(self) -> (list, dict):
         """解压地址数据包"""
-        name = 'address'
-        bz = bz2.BZ2File(os.path.dirname(__file__) +'./data'+ os.sep + name + '.bz2')
-        lines = bz.read().decode('utf-8')
-        address = json.loads(lines[512:-1134], encoding='utf8')
+        # name = 'address'
+        # bz = bz2.BZ2File(os.path.dirname(__file__) +'./data'+ os.sep + name + '.bz2')
+        # lines = bz.read().decode('utf-8')
+        # address = json.loads(lines[512:-1134], encoding='utf8')
+        address = readjson(os.path.join(os.path.dirname(__file__), './data/address.json'))
         root = MultiTree(value='中国', parent=None)
         for one_k, one_v in address.items():
             one = MultiTree(value=one_k, parent=root)

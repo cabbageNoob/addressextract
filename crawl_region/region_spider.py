@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 sys.path.insert(0, os.getcwd())
 
 from crawl_region import config
-from crawl_region.load_util import writejson2file
+from utils.load_util import writejson2file
 
 class RegionSpider():
     def __init__(self):
