@@ -7,7 +7,7 @@
 
 ## 中国城乡地区爬虫
 
-爬取[中国城乡数据](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/index.html)，数据统计时间是2019年，有请求重试机制，执行[代码](./crawl_region/region_spider.py)即可获取所有省市五级地址，数据以json格式存储
+爬取[中国城乡数据](http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/index.html)，数据统计时间是2019年，有请求重试机制，执行[代码](./crawl_region/region_spider.py)即可获取所有省市五级地址，[数据](./crawl_region/data/address.json)以json格式存储
 ```
 {
     "北京市": {
