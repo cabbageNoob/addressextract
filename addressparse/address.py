@@ -83,9 +83,6 @@ class Address:
     def _unzip(self) -> (list, dict):
         """解压地址数据包"""
         # name = 'address'
-        # bz = bz2.BZ2File(os.path.dirname(__file__) +'./data'+ os.sep + name + '.bz2')
-        # lines = bz.read().decode('utf-8')
-        # address = json.loads(lines[512:-1134], encoding='utf8')
         address = readjson(os.path.join(os.path.dirname(__file__), './data/address.json'))
         root = MultiTree(value='中国', parent=None)
         for one_k, one_v in address.items():

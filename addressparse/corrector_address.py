@@ -45,4 +45,5 @@ def correct_address(cls, sentence):
 
 if __name__ == '__main__':
     print(correct_address(address, '贵州省遵义市花溪区'))  # 贵州省-贵阳市-花溪区
-    print(correct_address(address, '江西省南昌市万年县'))  # 贵州省-贵阳市-花溪区
+    print(correct_address(address, '江西省南昌市万年县'))  # 
+    print(correct_address(address, '朝阳区桂林街道'))
