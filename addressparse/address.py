@@ -82,7 +82,7 @@ class Address:
 
     def _unzip(self) -> (list, dict):
         """解压地址数据包"""
-        # name = 'address'
+        name = 'address'
         address = readjson(os.path.join(os.path.dirname(__file__), './data/address.json'))
         root = MultiTree(value='中国', parent=None)
         for one_k, one_v in address.items():
