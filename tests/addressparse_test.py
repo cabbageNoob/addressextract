@@ -22,7 +22,8 @@ def find_address_test():
     print(str(time.time() - t1))
 
 def supplement_address_test():
-    print(supplement_address(address, '鄱阳四十里街镇'))
+    print(supplement_address(address, '娄山关'))
+    print(supplement_address(address, '娄山关街道'))
     print(supplement_address(address, '山西孝义'))
     print(supplement_address(address,'山西孝义镇'))
 

@@ -3,7 +3,7 @@ sys.path.insert(0, os.getcwd())
 from utils.load_util import readjson
 from utils.addressparse_util import reset_key
 
-from .multitree import MultiTree
+from addressparse.multitree import MultiTree
 from collections.abc import Iterable
 import ahocorasick
 import bz2
@@ -130,3 +130,10 @@ class Address:
         else:
             flag or self.ac.get(stop_key).append(obj)
             self.ac.get(key).append(obj)
+        if key.endswith('街道'):
+            self.flag_ac_contain_key(key[:-2], obj)
+
+
+if __name__ == '__main__':
+    suffix_stop = '[省市县区街道]'
+    print(re.sub(suffix_stop, '', '孝义市'))
