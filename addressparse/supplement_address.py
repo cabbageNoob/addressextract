@@ -56,13 +56,13 @@ def key_to_address(cls, keys):
     """
     all_ = []
     if isinstance(keys, str):
-        objs = cls.ac.get(keys)
-        address = [search(obj) for obj in objs]
+        objs = cls.ac.values(keys)
+        address = [search(_obj) for obj in objs for _obj in obj]
         return address
     elif isinstance(keys, Iterable):
         for key in keys:
-            objs = cls.ac.get(key)
-            address = [search(obj) for obj in objs]
+            objs = cls.ac.values(key)
+            address = [search(_obj) for obj in objs for _obj in obj]
             all_.extend(address)
     return all_
 

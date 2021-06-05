@@ -22,10 +22,11 @@ def find_address_test():
     print(str(time.time() - t1))
 
 def supplement_address_test():
-    print(supplement_address(address, '娄山关'))
-    print(supplement_address(address, '娄山关街道'))
-    print(supplement_address(address, '山西孝义'))
-    print(supplement_address(address,'山西孝义镇'))
+    # print(supplement_address(address, '娄山关'))
+    # print(supplement_address(address, '娄山关街道'))
+    # print(supplement_address(address, '山西孝义'))
+    # print(supplement_address(address,'山西孝义镇'))
+    print(supplement_address(address,'湘江'))
 
 if __name__ == '__main__':
     # find_address_test()

@@ -98,12 +98,12 @@ class Address:
                     two.add_children(three)
                     self.flag_ac_contain_key(three_k, three)
                     for four_k, four_v in three_v.items():
-                        four_k = reset_key(four_k)
+                        # four_k = reset_key(four_k)
                         four = MultiTree(value=four_k, parent=three)
                         three.add_children(four)
                         self.flag_ac_contain_key(four_k, four)
                         for five_k in four_v:
-                            five_k = reset_key(five_k)
+                            # five_k = reset_key(five_k)
                             five = MultiTree(value=five_k, parent=four)
                             four.add_children(five)
                             self.flag_ac_contain_key(five_k, five)
@@ -118,22 +118,12 @@ class Address:
             else:
                 words.append(i)
         values = list(filter(lambda x: len(x) > 1, words))
-        return [v for v in values if v in self.ac]  # 检验是否在ac自动机里面的词语
+        return values
 
     def flag_ac_contain_key(self, key, obj):
         """判断ac自动机里面是否包含相同的key值"""
-        stop_key = re.sub(self.suffix_stop, '', key)  # 包含一些停用词
-        flag = True if len(stop_key) <= 1 else (stop_key == key)
         if key not in self.ac:
-            flag or self.ac.add_word(stop_key, [obj])
             self.ac.add_word(key, [obj])
         else:
-            flag or self.ac.get(stop_key).append(obj)
             self.ac.get(key).append(obj)
-        if key.endswith('街道'):
-            self.flag_ac_contain_key(key[:-2], obj)
-
-
-if __name__ == '__main__':
-    suffix_stop = '[省市县区街道]'
-    print(re.sub(suffix_stop, '', '孝义市'))
+    
